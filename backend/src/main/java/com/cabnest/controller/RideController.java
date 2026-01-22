@@ -11,7 +11,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/rides")
-@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:5173" })
+@CrossOrigin(origins = "*")
 public class RideController {
 
     private final RideService rideService;
