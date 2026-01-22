@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: #ffffff;
+        --foreground: #000000;
+        --primary: #FFC107;
+        --primary-hover: #FFB300;
+        --secondary: #2C2C2C;
+    }
+
+    body {
+        @apply bg-[var(--background)] text-[var(--foreground)] antialiased;
+    }
+
+    * {
+        @apply transition-colors duration-200;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 relative overflow-hidden;
+    }
+
+    .btn-primary {
+        @apply bg-primary text-secondary shadow-premium hover:-translate-y-0.5 hover:shadow-premium-lg active:translate-y-0;
+        background: linear-gradient(135deg, #FFC107 0%, #FFD54F 100%);
+    }
+
+    .btn-secondary {
+        @apply bg-secondary text-white hover:bg-secondary-hover shadow-dark transition-all duration-300;
+    }
+
+    .glass-card {
+        @apply bg-bg-card backdrop-blur-md rounded-3xl p-8 border border-glass-border shadow-lg transition-all duration-300;
+    }
+
+    .glass-card:hover {
+        @apply transform -translate-y-2 bg-[rgba(255, 255, 255, 0.05)] border-[rgba(255, 193, 7, 0.3)];
+    }
+
+    .input-field {
+        @apply w-full bg-gray-100 p-3 rounded-lg border border-transparent focus:bg-white focus:border-primary outline-none transition-all duration-200;
+    }
+
+    .card-hover {
+        @apply transition-all duration-300 hover:shadow-premium hover:-translate-y-1;
+    }
+
+    /* Smooth animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.4s ease-out;
+    }
+
+    @keyframes pulse-yellow {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4); }
+        50% { box-shadow: 0 0 0 10px rgba(255, 193, 7, 0); }
+    }
+
+    .animate-pulse-yellow {
+        animation: pulse-yellow 2s infinite;
+    }
+}

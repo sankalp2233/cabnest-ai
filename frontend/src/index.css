@@ -1,0 +1,204 @@
+:root {
+  --primary: #ff511a;
+  /* Vibrant Orange/Coral from reference */
+  --primary-hover: #e64615;
+  --bg-dark: #0b0b0b;
+  /* Deep charcoal from reference */
+  --bg-dark-accent: #1a1a1a;
+  --bg-card: rgba(26, 26, 26, 0.6);
+  --text-light: #ffffff;
+  --text-gray: #a0a0a0;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(255, 81, 26, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(11, 11, 11, 0.8), rgba(11, 11, 11, 0.8)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  color: var(--text-light);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn {
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #ff511a !important;
+  /* Force orange */
+  background-image: none !important;
+  /* Remove any lingering gradients */
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 81, 26, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 81, 26, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--glass-bg);
+  color: white;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.card {
+  background-color: var(--bg-card);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-gray);
+  font-size: 0.875rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Navbar */
+.navbar {
+  background-color: rgba(11, 11, 11, 0.7);
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: white;
+}
+
+.logo span {
+  color: #ff511a !important;
+  /* Force orange */
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text-gray);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: white;
+}
+
+/* Map */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  z-index: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
